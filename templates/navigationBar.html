@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed; top: 0; width: 100%; max-height: 8.4%; min-height: 8.4%; z-index: 5; font-size: 20px;">
+    <a style="font-size: 26px" class="navbar-brand" href="{% url 'landing' %}">Organizado</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+    </button>   
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'documentation' %}">Documentaiton<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            {% if request.user.is_authenticated %}
+                <a class="btn btn-outline-primary btn-lg" style="margin: 5px" href="{% url 'upload' %}">See Answers</a>
+                <a class="btn btn-outline-primary btn-lg" style="margin: 15px" href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+                <a class="btn btn-outline-primary btn-lg" style="margin: 5px" href="{% url 'register' %}" >Sign Up</a>
+                <a class="btn btn-outline-primary btn-lg" style="margin: 15px" href="{% url 'signin' %}">Login</a>
+            {% endif %}
+        </form>
+    </div>
+</nav>

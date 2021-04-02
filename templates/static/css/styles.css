@@ -1,0 +1,189 @@
+body {
+    color: black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+span {
+    display: block;
+}
+
+[data-tab-content] {
+    display: none;
+    /* padding: 6px 12px; */
+    border-top: none;
+}
+.item {
+    width: 400px;
+    height: 100px;
+    font-size: 30px;
+    line-height: 100px;
+    text-align: center;
+    margin: 10px
+  }
+.line-break {
+    width: 100%;
+}
+.breaker:nth-child(3n) {
+    display: block;
+    width: 100%;
+    height: 0;
+}
+.active[data-tab-content] {
+    display: block;
+}
+
+.tabs {
+    display: list-item;
+    justify-content: space-around;
+    list-style-type: inherit;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid blue;
+}
+.tab {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.tab:hover {
+    background-color:  rgb(20, 24, 255);
+    color: white;
+}
+.tab.active {
+    background-color: rgb(77, 80, 252);  
+    color: white;
+}
+.tab-content {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#Upload {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
+}
+
+#background-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -5;
+    margin-top: -47px; 
+    padding-bottom: 1000px;
+
+    max-width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#home-page-center {
+    padding-top: 540px;
+    width: 500px;
+	height: 100px;
+}
+.larger-font {
+    font-size: 18px;
+}
+.logo {
+    width: 500px;
+    height: 500px;
+}
+.vertical-center {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
+	/* top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  	z-index: 3; */
+	margin: auto;
+}
+.column {
+    float: left;
+    width: 50%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#login-background {
+    background-image: url(../static/images/login_background.jpg); 
+    position: fixed; 
+    z-index: 4;
+}
+.search-bar {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.login-text-field {
+    font-size: 20px;
+}
+.center-login {
+    padding-top: 250px;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.wrapper{
+    margin-top: 79px;
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sidebar{
+    width: 250px;
+    z-index: 2;
+    height: 100%;
+    background: #007bff;  
+    padding: 30px 0px;
+    position: fixed;
+    max-width: 20%;
+}
+
+.wrapper .sidebar h2{
+    color: #fff;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wrapper .sidebar ul li{
+    cursor: pointer;
+    padding: 30px;
+    border-bottom: 1px solid #bdb8d7;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(255,255,255,0.05);
+}    
+
+.wrapper .sidebar ul li:hover {
+    background-color:  #3b99fd;
+}
+
+.wrapper .sidebar ul li:active {
+    background-color: #3b99fd; 
+}
+
+.wrapper .sidebar  ul li a {
+    color: white;
+}
+
+.wrapper .main_content{
+    margin-top: 60px;
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    padding: 30px;
+    font-size: 14px;
+}
+  

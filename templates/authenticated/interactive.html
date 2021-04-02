@@ -1,0 +1,27 @@
+{% extends 'base.html' %}   
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'tabs.js' %}" defer></script>
+
+<div class="wrapper">
+    <div class="sidebar-menu">
+        <h2>Sidebar</h2>
+        <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="#"><i class="fas fa-user"></i>Profile</a></li>
+        <button type="button" class="collapsible">Upload New Files</button>
+        <div class="content">
+
+        </div>
+    </div>
+
+    <div class="main_content">
+        <div class="header">Welcome!! Have a nice day.</div>  
+        <div class="info">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

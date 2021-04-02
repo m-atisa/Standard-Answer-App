@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div class="container" id="background-image" style="background-image: url('static/images/icy_background.jpg'); z-index: -4;">
+    <div class="row">
+        <div class="col-3 mx-auto">
+            <div class="text-center" style="position: relative;">
+                <div class="vertical-center" id="home-page-center">
+                    {% if request.user.is_authenticated %}
+                        <h2 id="banner-white">Continue Your Data Analytics Journey</h2>
+                        <div class="line-break"></div>
+                        <a href="{% url 'upload' %}" class="btn btn-outline-primary btn-lg" role="button">My Analytics</a>
+                    {% else %}
+                        <h1 id="banner-title">Standard Answers</h1>
+                        <h2 id="banner-white">All standard answers perfectly organized to save time and for ease of use</h2>
+                        <div class="line-break"></div>
+                        <a href="{% url 'signin' %}" class="btn btn-outline-primary btn-lg" role="button">Get Started</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- <video id="background-video" playsinline autoplay muted loop>
+    <source src="videos/homepage_background_vid.webm" type="video/webm">
+    <source src="{% static 'spinning_earth.mp4' %}" type="video/mp4">
+</video> -->

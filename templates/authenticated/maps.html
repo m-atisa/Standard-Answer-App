@@ -1,0 +1,68 @@
+{% extends 'base.html' %}   
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'tabs.js' %}" defer></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<div class="container">
+    <ul class="tabs">
+        <li data-tab-target="#Maps" class="active tab">Maps</li>
+        <li data-tab-target="#Files" class="tab">Files</li>
+    </ul>
+    <div class="tab-content">
+        <div id="Files" data-tab-content>
+            <h1>{{user}}'s files</h1>
+            <h2>Upload</h2>
+            <div class="upload-div">
+                <h1>File Upload</h1>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit</button>
+                </form>
+                <hr>
+                <ul>
+                {% for document in documents %}
+                    <li>
+                        <form method="post" action="{% url 'delete_file' document.pk %}">
+                            <a class="btn btn-primary" href="{{ document.upload.url }}">{{ document.upload }}</a>
+                            <small>({{ document.upload.size|filesizeformat }})</small>
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete This File</button>
+                        </form>
+                    </li>
+                    <br>
+                {% endfor %}
+                
+                <!-- <script>
+                    var document_name = "{{ document.upload.name }}".split("/")[1];
+                    $("a").append("${document_name}");
+                </script> -->
+                </ul>
+            </div>
+        </div>
+        <div id="Maps" data-tab-content class="active"> 
+            <h1>{{user}}'s maps</h1>
+            <h2>Maps</h2>
+            {% for map in maps %}
+                {% autoescape off %}
+                    {{ map }}
+                {% endautoescape %} 
+            {% endfor %}
+            <!-- {% if graph %}  
+                <div style="width:600;height:500">
+                    {{ graph|safe }}
+                </div>
+            {% else %}
+                <p>No graph was provided.</p>
+            {% endif %} -->
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

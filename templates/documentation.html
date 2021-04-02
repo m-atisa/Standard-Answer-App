@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="background-image" style="margin-top: 50px; background-image: url('https://i.pinimg.com/originals/09/fc/b0/09fcb0d486e3644346e5acca1b0cd5d2.jpg'); position: sticky-top; background-repeat: no-repeat;">
+    <div class="container">
+        <div class="center-login" style="box-sizing: border-box;">
+            <div class="row" style="display: flex; margin-top: 500px">
+                <div class="column" style="color: black; margin-top: 100px; padding-right: 20px;">
+                    <h2>This is an example of the type of file that must be used to generate a map based on the data submitted.
+                        Each State must be abbreviated when creating the table. Only CSV files will be accepted when creating maps. 
+                    </h2>
+                    <br>
+                    <h2>Download a template file to get started today!</h2>
+                    <br>
+                </div>
+                <div class="column">
+                    <img src="{% static '../media/documentation.png' %}" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <a href="{% static '../media/Template.csv' %}"><button class="btn btn-outline-primary" type="submit">Download Template</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

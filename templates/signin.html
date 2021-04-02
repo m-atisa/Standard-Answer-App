@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="background-image" style="background-image: url('../static/images/login_background.jpg'); position: relative; z-index: 4; height: 100vh; background-repeat: no-repeat;">
+    <div class="row py-5" style="margin-top: 50px; z-index: 3;">
+        <div class="offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+            <div class="text-center" style="position: relative; height: 100%;">
+                <div class="center-login">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="login-text-field">
+                            <input type="email" name="email" maxlength="60" required="" placeholder="Enter Email" id="id_email">
+                            <br>
+                            <br>
+                            <input type="password" name="password" required="" placeholder="Enter Password" id="id_password">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-outline-primary" type="submit">Log In</button>
+                        </div>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            Don't have an account?
+                            <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

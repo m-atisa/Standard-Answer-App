@@ -1,0 +1,83 @@
+{% extends 'base.html' %}   
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<script src="{% static 'js/interactive.js' %}" defer></script>
+<script src="{% static 'js/tabs.js' %}" defer></script>
+
+<div class="wrapper">
+    <div class="sidebar" style="position: fixed">
+        <h2>Welcome {{ user }}</h2>
+        <ul class="tabs" style="font-size: 20px">
+            <li><a href="{% url 'landing' %}"><i class="fas fa-home"></i>Home</a></li>
+            <li data-tab-target="#Upload"><a href="#"><i class="fas fa-upload"></i>Upload</a></li>
+            <li data-tab-target="#Maps"><a href="#"><i class="fas fa-map"></i>Maps</a></li>
+            <li data-tab-target="#Documents"><a href="#"><i class="fas fa-file"></i>Documents</a></li>
+        </ul>
+    </div>
+    <div class="main_content">
+        <div id="Maps" data-tab-content > 
+            <h2 class="text-center">My Maps</h2>
+            {% if maps %}  
+                {% for map in maps %}
+                    {% autoescape off %}
+                        {{ map }}
+                    {% endautoescape %} 
+                {% endfor %}
+            {% else %}
+                <h2>You don't have any maps. <br>Upload a file to get started.</h2>
+            {% endif %}
+            <br>
+        </div>
+        <div id="Upload" data-tab-content>
+            <div class="center-login" style="border: none">
+                <div class="upload-div" style="font-size: 25px;">
+                    <h1>File Upload</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="upload" id="id_upload" class="upload" required="" style="cursor: pointer;">
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <div id="Documents" data-tab-content class="active"> 
+            <div class="container">
+                <div class="row larger-font">
+                    <div class="col"><b>Download File</b></div>
+                    <div class="col-6"><b>Name Of File</b></div>
+                    <div class="col"><b>Date Uploaded</b></div>
+                    <div class="col"><b>Delete File</b></div>
+                </div>
+                <hr class="solid">
+                {% for document in documents %}
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-primary" href="{{ document.upload.url }}"><i class="fa fa-download" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-6">
+                            <a class="btn btn-primary" href="">{{ document.filename }}</a>
+                        </div>
+                        <div class="col">
+                            {{ document.uploaded_at }}
+                        </div>
+                        <form method="post" action="{% url 'delete_file' document.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <small>({{ document.upload.size|filesizeformat }})</small>
+                        </form>
+                    </div>
+                    <br>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
